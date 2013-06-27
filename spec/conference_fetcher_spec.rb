@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe ConferenceFetcher do
-  describe '.get' do
+  describe '.get_conference' do
     context 'the conference name exists' do
       it 'returns conference name' do
         VCR.use_cassette('conference fetcher get conf') do
-          conference = ConferenceFetcher.get('ruby-conf-2011')
+          conference = ConferenceFetcher.get_conference('ruby-conf-2011')
           expect(conference['name']).to eq 'Ruby Conference 2011'
         end
       end
@@ -14,7 +14,7 @@ describe ConferenceFetcher do
     context 'the conference does not exists' do
       it 'returns nil' do
         VCR.use_cassette('conference fetcher get conf does not exist') do
-          conference = ConferenceFetcher.get('ruby-conf-nevah')
+          conference = ConferenceFetcher.get_conference('ruby-conf-nevah')
           expect(conference).to be_nil
         end
       end

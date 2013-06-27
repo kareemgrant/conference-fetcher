@@ -6,7 +6,7 @@ require 'json'
 module ConferenceFetcher
   extend self
 
-  def get(conference_slug)
+  def get_conference(conference_slug)
     conference_request(conference_slug)
   end
 
